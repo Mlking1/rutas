@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa de Emergencias</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;  /* Cambio a layout vertical */
+            font-family: Arial, sans-serif;
+        }
+        #map, #sidebar {
+            flex: 1;  /* Cada uno toma el 50% del espacio disponible */
+        }
+        #map {
+            width: 100%;
+        }
+        #sidebar {
+            overflow-y: auto;  /* Permite desplazamiento vertical si es necesario */
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-top: 2px solid #ddd;
+        }
+        #controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .address-card {
+        border: 1px solid #ccc;
+        padding: 8px;
+        margin-bottom: 5px;
+        background-color: white;
+        cursor: grab;
+        }
+
+        .address-card:hover {
+        background-color: #f0f0f0;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="sidebar">
+        <h3>Direcciones</h3>
+        <ul id="addressList"></ul>
+        <div id="addressList" class="address-list"></div>
+
+        <button id="clearAllBtn">Limpiar Todo</button>
+
+
+    </div>
+    <div id="controls">
+        <div id="controls">
+            <input type="text" id="comuna" placeholder="Comuna" value="Antofagasta" style="margin-bottom: 5px;">
+            <input type="text" id="direccion" placeholder="Dirección">
+            <button onclick="buscarDireccion()">Buscar</button>
+            <button id="togglePolygonBtn">Toggle Polygon</button>
+
+        </div>
+        
+    
+      
+
+        <button onclick="buscarDireccion()">Buscar</button>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
